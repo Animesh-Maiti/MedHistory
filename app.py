@@ -222,6 +222,18 @@ def perform_audit(raw_text: str, patient_id: str) -> None:
                 str(MODEL_DIR),
             ]
         )
+        if not extraction.get("extracted_drugs"):
+            st.session_state.last_extraction = extraction
+            st.session_state.last_audit = {
+                "status": "NO_MEDICATIONS",
+                "message": (
+                    "No active prescription medications detected in this document. "
+                    "Patient active medications remain unchanged."
+                ),
+            }
+            st.session_state.last_patient = patient_id
+            st.session_state.last_text = raw_text
+            st.rerun()
         progress.progress(55, text="Reconciling patient history and DDI rules...")
         audit = run_json_command(
             [
@@ -407,7 +419,9 @@ if all(
         st.markdown(badges(extraction["extracted_diseases"], "disease-badge"), unsafe_allow_html=True)
 
     st.subheader("Safety audit")
-    if audit["status"] == "OVERDOSE_ALERT":
+    if audit["status"] == "NO_MEDICATIONS":
+        st.info(audit["message"])
+    elif audit["status"] == "OVERDOSE_ALERT":
         conflict = audit["conflict"]
         current_dose = conflict.get("current_daily_mg")
         current_text = "Unknown" if current_dose is None else f"{current_dose:g} mg/day"

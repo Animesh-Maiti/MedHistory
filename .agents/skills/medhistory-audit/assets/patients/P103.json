@@ -1,0 +1,38 @@
+{
+  "patient_id": "P103",
+  "name": "raju",
+  "age": 22,
+  "chronic_conditions": [],
+  "active_medications": [
+    {
+      "drug": "Warfarin",
+      "daily_mg": null,
+      "prescribed_date": "2026-10-09",
+      "status": "ACTIVE"
+    }
+  ],
+  "visits": [
+    {
+      "visit_id": "V-001",
+      "timestamp": "2026-10-09T10:39:10.583046+00:00",
+      "extracted_drugs": [
+        "Warfarin"
+      ],
+      "status": "APPROVED"
+    }
+  ],
+  "audit_history": [
+    {
+      "timestamp": "2026-10-09T10:39:10.583046+00:00",
+      "status": "APPROVED",
+      "visit_id": "V-001",
+      "extracted_drugs": [
+        "Warfarin"
+      ],
+      "extracted_diseases": [
+        "atrial fibrillation",
+        "Atrial fibrillation"
+      ]
+    }
+  ]
+}

@@ -16,6 +16,13 @@ from typing import Any
 SKILL_DIR = Path(__file__).resolve().parents[1]
 PATIENTS_DIR = SKILL_DIR / "assets" / "patients"
 DDI_RULES_FILE = SKILL_DIR / "references" / "ddi_rules.json"
+DRUG_ALIASES = {
+    "acetaminophen": "paracetamol",
+    "tylenol": "paracetamol",
+    "advil": "ibuprofen",
+    "motrin": "ibuprofen",
+    "coumadin": "warfarin",
+}
 
 
 def _load_extracted(value: str) -> dict[str, Any]:
@@ -52,7 +59,10 @@ def _load_extracted(value: str) -> dict[str, Any]:
 
 
 def _drug_key(value: str) -> str:
-    return " ".join(re.findall(r"[a-z0-9]+", value.casefold()))
+    tokens = re.findall(r"[a-z0-9]+", value.strip().casefold())
+    if tokens:
+        tokens[0] = DRUG_ALIASES.get(tokens[0], tokens[0])
+    return " ".join(tokens)
 
 
 def _matches_drug(mention: str, canonical_name: str) -> bool:
