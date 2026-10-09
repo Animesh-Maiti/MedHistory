@@ -1,0 +1,3 @@
+*.pdf binary
+*.safetensors binary
+*.bin binary

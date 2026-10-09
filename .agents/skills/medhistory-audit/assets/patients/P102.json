@@ -1,0 +1,12 @@
+{
+  "patient_id": "P102",
+  "name": "Marcus Chen",
+  "age": 54,
+  "chronic_conditions": [
+    "Type 2 Diabetes"
+  ],
+  "active_medications": [
+    "Metformin"
+  ],
+  "audit_history": []
+}

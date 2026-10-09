@@ -1,0 +1,6 @@
+torch>=2.0.0
+transformers>=4.35.0
+streamlit>=1.30.0
+pypdf>=3.17.0
+rich>=13.0.0
+reportlab>=4.0.0
