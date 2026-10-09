@@ -1,0 +1,38 @@
+[
+  {
+    "pair": ["Warfarin", "Aspirin"],
+    "severity": "CRITICAL",
+    "risk": "Severe gastrointestinal or systemic hemorrhage.",
+    "mechanism": "Warfarin reduces vitamin K-dependent clotting factor activity, while aspirin inhibits platelet aggregation and can injure gastrointestinal mucosa; their anticoagulant effects are additive."
+  },
+  {
+    "pair": ["Metformin", "Iodinated Contrast"],
+    "severity": "CRITICAL",
+    "risk": "Metformin-associated lactic acidosis in the setting of contrast-related kidney injury.",
+    "mechanism": "Iodinated contrast may precipitate acute kidney injury and reduce metformin clearance, increasing the risk of metformin accumulation and lactic acidosis."
+  },
+  {
+    "pair": ["Lisinopril", "Spironolactone"],
+    "severity": "HIGH",
+    "risk": "Severe hyperkalemia, potentially causing life-threatening arrhythmia or cardiac arrest.",
+    "mechanism": "ACE inhibition and aldosterone antagonism both reduce renal potassium excretion, producing additive potassium retention."
+  },
+  {
+    "pair": ["Sildenafil", "Nitroglycerin"],
+    "severity": "CRITICAL",
+    "risk": "Profound, potentially fatal refractory hypotension.",
+    "mechanism": "Both drugs amplify cyclic-GMP-mediated vasodilation; their combination can cause a dangerous and sustained fall in blood pressure."
+  },
+  {
+    "pair": ["Tramadol", "Sertraline"],
+    "severity": "HIGH",
+    "risk": "Serotonin syndrome, which can be life-threatening.",
+    "mechanism": "Tramadol has serotonergic activity and can add to sertraline's serotonin reuptake inhibition, causing excessive serotonergic signaling."
+  },
+  {
+    "pair": ["Simvastatin", "Clarithromycin"],
+    "severity": "HIGH",
+    "risk": "Acute rhabdomyolysis with possible renal failure.",
+    "mechanism": "Clarithromycin inhibits CYP3A4, reducing simvastatin metabolism and potentially causing toxic statin exposure and muscle breakdown."
+  }
+]

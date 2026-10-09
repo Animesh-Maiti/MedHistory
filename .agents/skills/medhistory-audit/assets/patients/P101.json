@@ -1,0 +1,65 @@
+{
+  "patient_id": "P101",
+  "name": "Eleanor Vance",
+  "age": 68,
+  "chronic_conditions": [
+    "Atrial Fibrillation",
+    "Hypertension"
+  ],
+  "active_medications": [
+    "Warfarin",
+    "Lisinopril",
+    "Amoxicillin",
+    "Guaifenesin",
+    "Paracetamol"
+  ],
+  "audit_history": [
+    {
+      "timestamp": "2026-10-09T07:30:00.902500+00:00",
+      "status": "APPROVED",
+      "extracted_drugs": [],
+      "extracted_diseases": [
+        "cough",
+        "shortness of breath",
+        "chest congestion",
+        "fever"
+      ]
+    },
+    {
+      "timestamp": "2026-10-09T07:32:32.128356+00:00",
+      "status": "APPROVED",
+      "extracted_drugs": [
+        "Amoxicillin",
+        "Guaifenesin",
+        "Paracetamol"
+      ],
+      "extracted_diseases": [
+        "dry cough",
+        "shortness of breath",
+        "chest congestion",
+        "fever",
+        "Respiratory Tract Infection",
+        "LRTI",
+        "pain"
+      ]
+    },
+    {
+      "timestamp": "2026-10-09T07:40:53.586702+00:00",
+      "status": "APPROVED",
+      "extracted_drugs": [
+        "Amoxicillin",
+        "Guaifenesin",
+        "Paracetamol"
+      ],
+      "extracted_diseases": [
+        "dry cough",
+        "shortness of breath",
+        "chest congestion",
+        "fever",
+        "Respiratory Tract Infection",
+        "LRTI",
+        "pain"
+      ]
+    }
+  ]
+}

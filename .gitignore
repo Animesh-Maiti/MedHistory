@@ -1,0 +1,36 @@
+# Python bytecode and test/tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments and local environment files
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.*
+!.env.example
+
+# Temporary files and editor/OS artifacts
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.log
+Thumbs.db
+.DS_Store
+
+# Local model weights and archives are too large for normal GitHub storage.
+# Keep model configuration and tokenizer files tracked.
+model/**/*.safetensors
+model/**/*.bin
+model/**/*.pt
+model/**/*.pth
+model/**/*.ckpt
+model/**/*.zip
