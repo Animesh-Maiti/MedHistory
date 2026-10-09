@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -38,6 +39,13 @@ ENTITY_ALIASES = {
     "CONDITION": "DISEASE",
     "CONDITIONS": "DISEASE",
 }
+DOSAGE_PATTERN = re.compile(r"\b\d[\d,]*(?:\.\d+)?\s*mg\b", re.IGNORECASE)
+FREQUENCY_PATTERNS = (
+    (re.compile(r"\b(?:four times (?:a|per) day|qid|every 6 hours?)\b", re.I), 4),
+    (re.compile(r"\b(?:three times (?:a|per) day|tid|every 8 hours?)\b", re.I), 3),
+    (re.compile(r"\b(?:twice (?:a|per) day|twice daily|bid|every 12 hours?)\b", re.I), 2),
+    (re.compile(r"\b(?:once (?:a|per) day|once daily|daily|each day|every day|qd)\b", re.I), 1),
+)
 
 
 def _normalize_label(label: str) -> tuple[str, str | None]:
@@ -122,6 +130,54 @@ def _merge_entities(text: str, entities: list[dict[str, Any]]) -> list[dict[str,
     return merged
 
 
+def extract_medication_details(
+    text: str, entities: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    sentences = [
+        (match.start(), match.end(), match.group(0))
+        for match in re.finditer(r"[^.!?\n]+(?:[.!?]|$)", text)
+    ]
+    details: list[dict[str, Any]] = []
+    for entity in entities:
+        if entity["label"] != "DRUG":
+            continue
+        sentence = next(
+            (
+                (start, end, value)
+                for start, end, value in sentences
+                if start <= entity["start"] < end
+            ),
+            (0, len(text), text),
+        )
+        sentence_start, _, sentence_text = sentence
+        sentence_dosages = list(DOSAGE_PATTERN.finditer(sentence_text))
+        dosage = min(
+            sentence_dosages,
+            key=lambda match: abs(
+                sentence_start + match.start() - entity["start"]
+            ),
+            default=None,
+        )
+        daily_frequency = next(
+            (frequency for pattern, frequency in FREQUENCY_PATTERNS if pattern.search(sentence_text)),
+            1,
+        )
+        daily_mg = None
+        dosage_str = None
+        if dosage is not None:
+            dosage_str = dosage.group(0)
+            strength_mg = float(re.search(r"\d[\d,]*(?:\.\d+)?", dosage_str).group(0).replace(",", ""))
+            daily_mg = round(strength_mg * daily_frequency)
+        details.append(
+            {
+                "drug": entity["text"],
+                "dosage_str": dosage_str,
+                "daily_mg": daily_mg,
+            }
+        )
+    return details
+
+
 def extract_pdf_text(pdf_path: Path) -> str:
     if not pdf_path.is_file():
         raise FileNotFoundError(f"PDF file does not exist: {pdf_path}")
@@ -136,6 +192,7 @@ def extract(text: str, model_dir: Path) -> dict[str, Any]:
             "entities": [],
             "extracted_drugs": [],
             "extracted_diseases": [],
+            "medication_details": [],
             "warnings": [],
         }
     if not model_dir.is_dir():
@@ -199,7 +256,12 @@ def extract(text: str, model_dir: Path) -> dict[str, Any]:
     for chunk_index, offsets in enumerate(chunk_offsets):
         chunk_predictions = logits[chunk_index, : len(offsets)].tolist()
         entities.extend(decode_entities(text, offsets, chunk_predictions, id2label))
-    entities = _merge_entities(text, entities)
+    entities = [
+        entity
+        for entity in _merge_entities(text, entities)
+        if len(entity["text"].strip()) > 1
+        and any(character.isalpha() for character in entity["text"])
+    ]
     drugs = list(
         dict.fromkeys(entity["text"] for entity in entities if entity["label"] == "DRUG")
     )
@@ -208,11 +270,13 @@ def extract(text: str, model_dir: Path) -> dict[str, Any]:
             entity["text"] for entity in entities if entity["label"] == "DISEASE"
         )
     )
+    medication_details = extract_medication_details(text, entities)
     return {
         "raw_text": text,
         "entities": entities,
         "extracted_drugs": drugs,
         "extracted_diseases": diseases,
+        "medication_details": medication_details,
         "warnings": warnings,
     }
 

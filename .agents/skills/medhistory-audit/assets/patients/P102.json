@@ -6,7 +6,56 @@
     "Type 2 Diabetes"
   ],
   "active_medications": [
-    "Metformin"
+    {
+      "drug": "Metformin",
+      "daily_mg": null,
+      "prescribed_date": null,
+      "status": "ACTIVE"
+    },
+    {
+      "drug": "Paracetamol",
+      "daily_mg": 2000,
+      "prescribed_date": "2026-10-09",
+      "status": "ACTIVE"
+    }
   ],
-  "audit_history": []
+  "visits": [
+    {
+      "visit_id": "V-001",
+      "timestamp": "2026-10-09T08:47:09.014715+00:00",
+      "extracted_drugs": [
+        "Paracetamol"
+      ],
+      "status": "APPROVED"
+    }
+  ],
+  "audit_history": [
+    {
+      "timestamp": "2026-10-09T08:47:09.014715+00:00",
+      "status": "APPROVED",
+      "visit_number": 1,
+      "extracted_drugs": [
+        "Paracetamol"
+      ],
+      "extracted_diseases": []
+    }
+  ],
+  "visit_history": [
+    {
+      "visit_number": 1,
+      "prescription_date": "2026-10-09T08:47:09.014715+00:00",
+      "status": "APPROVED",
+      "visit_type": "BASELINE",
+      "prescriptions": [
+        {
+          "drug": "Paracetamol",
+          "dosage_str": "2000mg",
+          "daily_mg": 2000,
+          "status": "ACTIVE",
+          "prescription_date": "2026-10-09T08:47:09.014715+00:00"
+        }
+      ],
+      "extracted_diseases": []
+    }
+  ]
 }

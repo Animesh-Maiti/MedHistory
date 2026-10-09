@@ -7,6 +7,7 @@ from pathlib import Path
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
+from rich.console import Console
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent
@@ -40,5 +41,6 @@ def generate_sample_pdfs() -> list[Path]:
 
 
 if __name__ == "__main__":
+    console = Console()
     for pdf_path in generate_sample_pdfs():
-        print(pdf_path.relative_to(PROJECT_ROOT))
+        console.print(f"[green]Created[/green] {pdf_path.relative_to(PROJECT_ROOT)}")
