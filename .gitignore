@@ -1,5 +1,6 @@
 # Python bytecode and test/tool caches
 __pycache__/
+*.pyc
 *.py[cod]
 .pytest_cache/
 .mypy_cache/
@@ -28,6 +29,10 @@ Thumbs.db
 
 # Local model weights and archives are too large for normal GitHub storage.
 # Keep model configuration and tokenizer files tracked.
+*.safetensors
+*.bin
+*.pt
+*.zip
 model/**/*.safetensors
 model/**/*.bin
 model/**/*.pt

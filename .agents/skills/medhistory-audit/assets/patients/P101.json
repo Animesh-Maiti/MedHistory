@@ -7,11 +7,78 @@
     "Hypertension"
   ],
   "active_medications": [
-    "Warfarin",
-    "Lisinopril",
-    "Amoxicillin",
-    "Guaifenesin",
-    "Paracetamol"
+    {
+      "drug": "Warfarin",
+      "daily_mg": null,
+      "prescribed_date": null,
+      "status": "ACTIVE"
+    },
+    {
+      "drug": "Lisinopril",
+      "daily_mg": null,
+      "prescribed_date": null,
+      "status": "ACTIVE"
+    },
+    {
+      "drug": "Amoxicillin",
+      "daily_mg": null,
+      "prescribed_date": "2026-10-09",
+      "status": "ACTIVE"
+    },
+    {
+      "drug": "Guaifenesin",
+      "daily_mg": null,
+      "prescribed_date": "2026-10-09",
+      "status": "ACTIVE"
+    },
+    {
+      "drug": "Paracetamol",
+      "daily_mg": 1000,
+      "prescribed_date": "2026-10-09",
+      "status": "ACTIVE"
+    },
+    {
+      "drug": "Warfarin",
+      "daily_mg": null,
+      "prescribed_date": "2026-10-09",
+      "status": "ACTIVE"
+    }
+  ],
+  "visits": [
+    {
+      "visit_id": "V-001",
+      "timestamp": "2026-10-09T07:30:00.902500+00:00",
+      "extracted_drugs": [],
+      "status": "APPROVED"
+    },
+    {
+      "visit_id": "V-002",
+      "timestamp": "2026-10-09T07:32:32.128356+00:00",
+      "extracted_drugs": [
+        "Amoxicillin",
+        "Guaifenesin",
+        "Paracetamol"
+      ],
+      "status": "APPROVED"
+    },
+    {
+      "visit_id": "V-003",
+      "timestamp": "2026-10-09T07:40:53.586702+00:00",
+      "extracted_drugs": [
+        "Amoxicillin",
+        "Guaifenesin",
+        "Paracetamol"
+      ],
+      "status": "APPROVED"
+    },
+    {
+      "visit_id": "V-004",
+      "timestamp": "2026-10-09T10:36:41.125277+00:00",
+      "extracted_drugs": [
+        "Warfarin"
+      ],
+      "status": "APPROVED"
+    }
   ],
   "audit_history": [
     {
@@ -59,6 +126,18 @@
         "Respiratory Tract Infection",
         "LRTI",
         "pain"
+      ]
+    },
+    {
+      "timestamp": "2026-10-09T10:36:41.125277+00:00",
+      "status": "APPROVED",
+      "visit_id": "V-004",
+      "extracted_drugs": [
+        "Warfarin"
+      ],
+      "extracted_diseases": [
+        "atrial fibrillation",
+        "Atrial fibrillation"
       ]
     }
   ]

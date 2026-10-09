@@ -1,38 +1,85 @@
-[
-  {
-    "pair": ["Warfarin", "Aspirin"],
-    "severity": "CRITICAL",
-    "risk": "Severe gastrointestinal or systemic hemorrhage.",
-    "mechanism": "Warfarin reduces vitamin K-dependent clotting factor activity, while aspirin inhibits platelet aggregation and can injure gastrointestinal mucosa; their anticoagulant effects are additive."
-  },
-  {
-    "pair": ["Metformin", "Iodinated Contrast"],
-    "severity": "CRITICAL",
-    "risk": "Metformin-associated lactic acidosis in the setting of contrast-related kidney injury.",
-    "mechanism": "Iodinated contrast may precipitate acute kidney injury and reduce metformin clearance, increasing the risk of metformin accumulation and lactic acidosis."
-  },
-  {
-    "pair": ["Lisinopril", "Spironolactone"],
-    "severity": "HIGH",
-    "risk": "Severe hyperkalemia, potentially causing life-threatening arrhythmia or cardiac arrest.",
-    "mechanism": "ACE inhibition and aldosterone antagonism both reduce renal potassium excretion, producing additive potassium retention."
-  },
-  {
-    "pair": ["Sildenafil", "Nitroglycerin"],
-    "severity": "CRITICAL",
-    "risk": "Profound, potentially fatal refractory hypotension.",
-    "mechanism": "Both drugs amplify cyclic-GMP-mediated vasodilation; their combination can cause a dangerous and sustained fall in blood pressure."
-  },
-  {
-    "pair": ["Tramadol", "Sertraline"],
-    "severity": "HIGH",
-    "risk": "Serotonin syndrome, which can be life-threatening.",
-    "mechanism": "Tramadol has serotonergic activity and can add to sertraline's serotonin reuptake inhibition, causing excessive serotonergic signaling."
-  },
-  {
-    "pair": ["Simvastatin", "Clarithromycin"],
-    "severity": "HIGH",
-    "risk": "Acute rhabdomyolysis with possible renal failure.",
-    "mechanism": "Clarithromycin inhibits CYP3A4, reducing simvastatin metabolism and potentially causing toxic statin exposure and muscle breakdown."
+{
+  "interactions": [
+    {
+      "pair": ["Warfarin", "Aspirin"],
+      "severity": "CRITICAL",
+      "risk": "Severe gastrointestinal or systemic hemorrhage.",
+      "mechanism": "Warfarin reduces vitamin K-dependent clotting factor activity, while aspirin inhibits platelet aggregation and can injure gastrointestinal mucosa; their anticoagulant effects are additive."
+    },
+    {
+      "pair": ["Warfarin", "Ibuprofen"],
+      "severity": "CRITICAL",
+      "risk": "Major bleeding, including gastrointestinal hemorrhage.",
+      "mechanism": "Warfarin impairs coagulation while ibuprofen inhibits platelet function and can cause gastrointestinal ulceration, increasing bleeding risk through additive hemostatic impairment."
+    },
+    {
+      "pair": ["Warfarin", "Naproxen"],
+      "severity": "CRITICAL",
+      "risk": "Additive gastrointestinal bleeding and hemorrhage.",
+      "mechanism": "Warfarin reduces clotting-factor activity and naproxen impairs platelet aggregation while increasing gastrointestinal mucosal injury."
+    },
+    {
+      "pair": ["Metformin", "Iodinated Contrast"],
+      "severity": "CRITICAL",
+      "risk": "Metformin-associated lactic acidosis in the setting of contrast-related kidney injury.",
+      "mechanism": "Iodinated contrast may precipitate acute kidney injury and reduce metformin clearance, increasing the risk of metformin accumulation and lactic acidosis."
+    },
+    {
+      "pair": ["Lisinopril", "Spironolactone"],
+      "severity": "HIGH",
+      "risk": "Severe hyperkalemia, potentially causing life-threatening arrhythmia or cardiac arrest.",
+      "mechanism": "ACE inhibition and aldosterone antagonism both reduce renal potassium excretion, producing additive potassium retention."
+    },
+    {
+      "pair": ["Sildenafil", "Nitroglycerin"],
+      "severity": "CRITICAL",
+      "risk": "Profound, potentially fatal refractory hypotension.",
+      "mechanism": "Both drugs amplify cyclic-GMP-mediated vasodilation; their combination can cause a dangerous and sustained fall in blood pressure."
+    },
+    {
+      "pair": ["Tadalafil", "Nitroglycerin"],
+      "severity": "CRITICAL",
+      "risk": "Severe refractory hypotension, syncope, or cardiovascular collapse.",
+      "mechanism": "Tadalafil inhibits PDE5 and nitrates increase nitric-oxide-driven cGMP; combined cGMP accumulation produces excessive vasodilation and a potentially fatal blood-pressure drop."
+    },
+    {
+      "pair": ["Tramadol", "Sertraline"],
+      "severity": "HIGH",
+      "risk": "Serotonin syndrome, which can be life-threatening.",
+      "mechanism": "Tramadol has serotonergic activity and can add to sertraline's serotonin reuptake inhibition, causing excessive serotonergic signaling."
+    },
+    {
+      "pair": ["Fluoxetine", "Tramadol"],
+      "severity": "HIGH",
+      "risk": "Serotonin syndrome with hyperthermia and autonomic instability.",
+      "mechanism": "Fluoxetine inhibits serotonin reuptake and tramadol adds serotonergic activity; their combination can cause excessive serotonin accumulation."
+    },
+    {
+      "pair": ["Sertraline", "Linezolid"],
+      "severity": "CRITICAL",
+      "risk": "Serotonin syndrome with potentially life-threatening autonomic and neuromuscular effects.",
+      "mechanism": "Linezolid has reversible monoamine oxidase-inhibiting activity, reducing serotonin breakdown while sertraline inhibits reuptake."
+    },
+    {
+      "pair": ["Digoxin", "Amiodarone"],
+      "severity": "HIGH",
+      "risk": "Digoxin toxicity, including bradyarrhythmias and ventricular arrhythmias.",
+      "mechanism": "Amiodarone inhibits P-glycoprotein efflux and can reduce digoxin clearance, increasing serum digoxin exposure and toxicity risk."
+    },
+    {
+      "pair": ["Simvastatin", "Clarithromycin"],
+      "severity": "HIGH",
+      "risk": "Acute rhabdomyolysis with possible renal failure.",
+      "mechanism": "Clarithromycin inhibits CYP3A4, reducing simvastatin metabolism and potentially causing toxic statin exposure and muscle breakdown."
+    }
+  ],
+  "max_daily_limits_mg": {
+    "Paracetamol": 4000,
+    "Acetaminophen": 4000,
+    "Aspirin": 4000,
+    "Ibuprofen": 2400,
+    "Amoxicillin": 3000,
+    "Metformin": 2550,
+    "Warfarin": 10
   }
-]
+}
